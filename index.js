@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const bot = new Discord.Client();
-const token = "NjYxMjk0NDAwODI3MDMxNTcz.Xu_YcQ.uERoR9JWYYjMcm2aO_NodUf6XGg";
+const token = require("./config.json");
 const PREFIX = "!";
 
 // check single command(s)
