@@ -1,21 +1,22 @@
 const Discord = require("discord.js");
 const bot = new Discord.Client();
-const token = require("./config.json");
+const { token } = require("./config.json");
 const PREFIX = "!";
 
 // check single command(s)
 const checkSingleCommands = msg => {
-  const commands = msg.content.substring(PREFIX.length).split(" ");
+  const str = msg.content.substring(PREFIX.length);
+  const command = str.split(":")[0];
+  const args = str
+    .substring(str.indexOf(":") + 1, str.length)
+    .replace(/\s/g, "%20")
+    .split(",");
 
-  for (const command of commands) {
-    switch (command) {
-      case "ping":
-        msg.channel.send("pong"); // replies to the channel
-        break;
-      case "shit":
-        msg.reply("please watch your mouth in this channel. Thanks!"); // replies to a specific person
-        break;
-    }
+  switch (command) {
+    case "fluky":
+      const url = "http://fluky.io/?name=" + args;
+      msg.channel.send(url);
+      break;
   }
 };
 
